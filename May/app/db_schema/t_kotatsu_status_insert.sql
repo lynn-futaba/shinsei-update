@@ -1,0 +1,14 @@
+INSERT INTO `t_kotatsu_status` (`kotatsu_id`, `loaded_pallet_id`, `cell_code`, `booking`, `created_date`, `updated_date`) VALUES ('OKE0001', NULL, 27643848, 0, '2026-03-06 11:55:00', '2026-04-01 22:37:51');
+INSERT INTO `t_kotatsu_status` (`kotatsu_id`, `loaded_pallet_id`, `cell_code`, `booking`, `created_date`, `updated_date`) VALUES ('OKE0002', NULL, 25743720, 0, '2026-03-06 11:55:00', '2026-04-01 22:37:51');
+INSERT INTO `t_kotatsu_status` (`kotatsu_id`, `loaded_pallet_id`, `cell_code`, `booking`, `created_date`, `updated_date`) VALUES ('OKE0003', NULL, 27644368, 0, '2026-03-06 11:55:00', '2026-04-01 22:37:51');
+INSERT INTO `t_kotatsu_status` (`kotatsu_id`, `loaded_pallet_id`, `cell_code`, `booking`, `created_date`, `updated_date`) VALUES ('OKE0004', NULL, 25744368, 0, '2026-03-06 11:55:00', '2026-04-01 22:37:51');
+INSERT INTO `t_kotatsu_status` (`kotatsu_id`, `loaded_pallet_id`, `cell_code`, `booking`, `created_date`, `updated_date`) VALUES ('OKE0005', NULL, 21233530, 0, '2026-03-06 11:55:00', '2026-04-01 22:37:51');
+INSERT INTO `t_kotatsu_status` (`kotatsu_id`, `loaded_pallet_id`, `cell_code`, `booking`, `created_date`, `updated_date`) VALUES ('OKE0006', NULL, 21233330, 0, '2026-03-06 11:55:00', '2026-04-01 22:37:51');
+INSERT INTO `t_kotatsu_status` (`kotatsu_id`, `loaded_pallet_id`, `cell_code`, `booking`, `created_date`, `updated_date`) VALUES ('OKE0007', NULL, 21232230, 0, '2026-03-06 11:55:00', '2026-04-01 22:37:51');
+INSERT INTO `t_kotatsu_status` (`kotatsu_id`, `loaded_pallet_id`, `cell_code`, `booking`, `created_date`, `updated_date`) VALUES ('OKE0008', NULL, 21232030, 0, '2026-03-06 11:55:00', '2026-04-01 22:37:51');
+INSERT INTO `t_kotatsu_status` (`kotatsu_id`, `loaded_pallet_id`, `cell_code`, `booking`, `created_date`, `updated_date`) VALUES ('OKE0009', NULL, 25001000, 0, '2026-03-06 11:55:00', '2026-04-01 22:37:51');
+INSERT INTO `t_kotatsu_status` (`kotatsu_id`, `loaded_pallet_id`, `cell_code`, `booking`, `created_date`, `updated_date`) VALUES ('OKE0010', NULL, 27001000, 0, '2026-03-06 11:55:00', '2026-04-01 22:37:51');
+INSERT INTO `t_kotatsu_status` (`kotatsu_id`, `loaded_pallet_id`, `cell_code`, `booking`, `created_date`, `updated_date`) VALUES ('OKE0011', NULL, 25072660, 0, '2026-03-06 11:55:00', '2026-04-01 22:37:51');
+INSERT INTO `t_kotatsu_status` (`kotatsu_id`, `loaded_pallet_id`, `cell_code`, `booking`, `created_date`, `updated_date`) VALUES ('OKE0012', NULL, 27072660, 0, '2026-03-06 11:55:00', '2026-04-01 22:37:51');
+INSERT INTO `t_kotatsu_status` (`kotatsu_id`, `loaded_pallet_id`, `cell_code`, `booking`, `created_date`, `updated_date`) VALUES ('OKE0013', NULL, NULL, 0, '2026-03-19 21:59:55', '2026-03-19 21:59:55');
+INSERT INTO `t_kotatsu_status` (`kotatsu_id`, `loaded_pallet_id`, `cell_code`, `booking`, `created_date`, `updated_date`) VALUES ('OKE0014', NULL, NULL, 0, '2026-03-19 21:59:57', '2026-03-19 21:59:57');

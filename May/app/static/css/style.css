@@ -1,0 +1,519 @@
+/* ============================================================
+   GLOBAL VIEWPORT (NO DOCUMENT SCALING)
+   ============================================================ */
+  /* ============================================================
+   FORCED VIEWPORT SCALING (Make 100% look like 50%)
+   ============================================================ */
+html {
+  /* Prevent scrollbars on the html element itself */
+  overflow: hidden; 
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  /* Set the virtual width to 200% so that scaling it by 0.5 
+     results in a 100% fit of your 'large' layout */
+  width: 200% !important; 
+  height: 200% !important;
+  
+  /* Scale from the top-left corner */
+  transform: scale(0.5);
+  transform-origin: 0 0;
+  
+  /* Ensure it doesn't get cut off */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Fix for background colors if they disappear */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: -1;
+  background: inherit;
+}
+  
+  main {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
+  }
+  
+  /* ✅ CRITICAL FIX: full height chain */
+  main > .container-fluid,
+  main > .container-fluid > .row {
+    height: 100%;
+  }
+  
+  /* Prevent flex shrink bugs */
+  .row > [class*="col-"] {
+    min-height: 0;
+  }
+  
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  /* Responsive font tuning */
+  @media (max-height: 900px) {
+    body { font-size: 0.85rem; }
+    .btn-fat { padding: .45rem 1rem; }
+    .card { margin-bottom: .35rem !important; }
+  }
+  
+  @media (max-width: 1366px) {
+    body { font-size: 0.95rem; }
+  }
+  
+  /* ============================================================
+     CARD & COMMON SPACING
+     ============================================================ */
+  .card {
+    margin-bottom: .5rem !important;
+  }
+  
+  .card-body {
+    justify-content: flex-start;
+    padding-left: .75rem;
+    padding-right: .75rem;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* ============================================================
+     TABLE SYSTEM
+     ============================================================ */
+  :root {
+    --table-box-h: min(280px, 30vh);
+    --table-head-bg: #f8f9fa;
+    --tbl-row-h: 3.2rem;
+    --tbl-head-h: 3.0rem;
+  }
+  
+  .table-scroll-y,
+  .table-scroll-x,
+  .table-scroll-both {
+    height: var(--table-box-h);
+    width: 100%;
+    min-height: 0;
+    position: relative;
+    overflow: auto;
+  }
+  
+  .table-scroll-y { overflow-x: hidden; }
+  .table-scroll-x { overflow-y: hidden; }
+  .table-scroll-both { overflow-x: auto; overflow-y: auto; }
+  
+  .table-scroll-x table,
+  .table-scroll-both table {
+    min-width: 900px;
+    border-collapse: separate;
+  }
+  
+  .table-scroll-x th,
+  .table-scroll-x td,
+  .table-scroll-both th,
+  .table-scroll-both td {
+    white-space: nowrap;
+  }
+  
+  .table-scroll-y thead th,
+  .table-scroll-x thead th,
+  .table-scroll-both thead th {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: var(--table-head-bg);
+  }
+  
+  .table-responsive.table-scroll-y {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .table-responsive.table-scroll-x {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  .table-responsive.table-scroll-both {
+    overflow-x: auto;
+    overflow-y: auto;
+  }
+  
+  /* ============================================================
+     LAYOUT
+     ============================================================ */
+  .left-col,
+  .right-col {
+    height: 100%;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    overflow: hidden;
+  }
+  
+  /* Map vs error ratio */
+  .left-col > .card:first-child {
+    flex: 3 1 0;
+  }
+  .left-col > .error-card {
+    flex: 1 1 0;
+    min-height: 0;
+  }
+  
+  /* Fix table stretching */
+  .error-card .table-scroll-y {
+    height: 100%;
+  }
+
+  .right-grid {
+    display: grid;
+    grid-template-rows:
+      auto
+      auto
+      minmax(0, auto)
+      minmax(0, auto)
+      minmax(0, auto);
+    height: 100%;
+    gap: .75rem;
+  }
+
+  .right-grid > .card {
+    min-height: 0;
+  }
+  
+  .right-grid .card-body {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  
+  .right-grid .table-responsive {
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+  
+  /* ============================================================
+     BUTTONS
+     ============================================================ */
+  .btn-lg {
+    padding-top: .2rem !important;
+    padding-bottom: .2rem !important;
+  }
+  
+  .btn-fat {
+    font-size: 1.5rem;
+    padding: .6rem 1.2rem;
+    line-height: 1.1;
+  }
+  
+  /* ============================================================
+     GAUGE FIXES
+     ============================================================ */
+  .mode-grid {
+    display: grid;
+    grid-template-columns: 250px 250px 1fr;
+    align-items: center;
+    column-gap: 2rem;
+  }
+  
+  .gauge-inline {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center; /* ✅ FIXED */
+    min-width: 300px;
+  }
+  
+  /* ============================================================
+     MAP FIXES
+     ============================================================ */
+  .map-viewport {
+    min-height: 0;
+  }
+  
+  #map-container {
+    width: 100%;
+    height: 100%;
+  }
+  
+  #map-container:active {
+    cursor: grabbing;
+  }
+  
+  /* ============================================================
+     ROBOT UI
+     ============================================================ */
+  .robot-element[cx]:hover {
+    transform: scale(1.12);
+    filter: drop-shadow(0 3px 6px rgba(0,0,0,0.4));
+  }
+  
+  .robot-selected {
+    stroke: #ffdd33 !important;
+    stroke-width: 4 !important;
+  }
+  
+  /* ============================================================
+     SPACING
+     ============================================================ */
+  header > .container-fluid {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+  
+  footer > .container-fluid {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  
+  main > .container-fluid {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+  
+  /* ============================================================
+     TABLET SUPPORT (SAFE STACK)
+     ============================================================ */
+  @media (max-width: 992px) {
+    main > .container-fluid > .row {
+      flex-direction: column;
+    }
+  
+    .left-col,
+    .right-col {
+      height: auto;
+    }
+  }
+
+  /* ===========================
+   Semicircle Temperature Gauge Switch (Compact, CSS-only control)
+   LEFT = 自動 (green), RIGHT = 各個 (blue)
+   =========================== */
+
+    /* 3カラム固定で絶対にズレない UI */
+  .mode-grid {
+    display: grid;
+    grid-template-columns: 250px 250px 1fr;  /* 左2つは固定幅、ゲージは伸びる */
+    align-items: center;
+    column-gap: 2rem;
+  }
+
+  /* ゲージエリアを縮まないよう固定 */
+  .gauge-fixed {
+    min-width: 320px;
+  }
+
+  /* Bigger buttons without adding big gaps */
+  .btn-fat {
+    font-size: 1.5rem;        /* bigger text (≈ fs-2) */
+    padding: .6rem 1.2rem;    /* taller buttons */
+    line-height: 1.1;
+  }
+
+  .semi-gauge {
+    --gauge-w: 200px;          /* width for inline with btn-lg */
+    --gauge-h: 110px;          /* total height */
+    --arc-thickness: 14px;     /* arc thickness */
+    --needle-l: 95px;          /* needle length */
+    --needle-w: 15px;           /* needle width */
+    --cap: 32px;               /* center cap diameter */
+    --angle-left: -70deg;      /* 自動 */
+    --angle-right: 70deg;      /* 各個 */
+
+    --clr-auto: red;       /* green */
+    --clr-indv: red;       /* blue */
+    --clr-arc-grad-left: #198754;
+    --clr-arc-grad-right: #d4dfe9;
+    --ring: rgba(17,17,17,.16);
+
+    width: var(--gauge-w);
+    height: var(--gauge-h);
+    position: relative;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    place-items: center;
+    user-select: none;
+
+    /* Touch-friendly */
+    min-height: 44px;
+  }
+  
+  /* Inline helper to sit in same row as buttons */
+  .gauge-inline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .75rem;
+  }
+  
+  /* --- Radio controls (visually hidden but accessible) --- */
+  .semi-gauge .gauge-input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  /* Labels row: placed at extreme left/right of gauge */
+  .semi-gauge .gauge-labels {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr auto; /* left label | spacer | right label */
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 2px;
+  }
+  .semi-gauge .gauge-label {
+    font-size: 1rem;
+    font-weight: 900;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;          /* click to switch */
+    user-select: none;
+  }
+  .semi-gauge .gauge-label.left  { color: var(--clr-auto); }
+  .semi-gauge .gauge-label.right { color: var(--clr-indv); }
+  
+  /* Dial container (semicircle) */
+  .semi-gauge .gauge-dial {
+    position: relative;
+    width: var(--gauge-w);
+    height: calc(var(--gauge-h) - 32px);
+    display: grid;
+    place-items: center;
+  }
+  
+  /* Semicircle gradient arc */
+  .semi-gauge .gauge-arc {
+    position: relative;
+    width: 90%;
+    max-width: 200px;
+    aspect-ratio: 2 / 1;
+    border-top-left-radius: 999px;
+    border-top-right-radius: 999px;
+    background: linear-gradient(90deg, var(--clr-arc-grad-left), var(--clr-arc-grad-right));
+    /* carve arc thickness */
+    mask:
+      radial-gradient(100% 100% at 50% 100%, #0000 50%, #000 51%) top/100% 100%,
+      linear-gradient(#000 0 0) top/100% var(--arc-thickness);
+    -webkit-mask:
+      radial-gradient(100% 100% at 50% 100%, #0000 50%, #000 51%) top/100% 100%,
+      linear-gradient(#000 0 0) top/100% var(--arc-thickness);
+    -webkit-mask-composite: destination-in;
+            mask-composite: intersect;
+    box-shadow: inset 0 1px 4px rgba(0,0,0,.18);
+  }
+  
+  /* Optional end ticks for clarity */
+  .semi-gauge .gauge-ticks {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: end center;
+    pointer-events: none;
+  }
+  .semi-gauge .gauge-ticks::before,
+  .semi-gauge .gauge-ticks::after {
+    content: "";
+    position: absolute;
+    bottom: calc(var(--arc-thickness) / 2);
+    width: 2px;
+    height: 10px;
+    background: rgba(0,0,0,.28);
+    transform-origin: bottom center;
+    border-radius: 2px;
+  }
+  .semi-gauge .gauge-ticks::before { transform: rotate(var(--angle-left)); }
+  .semi-gauge .gauge-ticks::after  { transform: rotate(var(--angle-right)); }
+  
+  /* Needle + pivot */
+  .semi-gauge .gauge-pivot {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: var(--cap);
+    height: var(--cap);
+    display: grid;
+    place-items: center;
+    z-index: 2;
+  }
+  
+  .semi-gauge .gauge-needle {
+    position: absolute;
+    width: var(--needle-w);
+    height: var(--needle-l);
+    border-radius: 999px;
+    transform-origin: center calc(100% - (var(--cap) / 2));
+    transition: transform .2s ease-out, background .12s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,.22);
+  }
+  
+  /* Center cap */
+  .semi-gauge .gauge-cap {
+    width: calc(var(--cap) - 6px);
+    height: calc(var(--cap) - 6px);
+    border-radius: 50%;
+    background: #fff;
+    border: 3px solid #333;
+    z-index: 3;
+    box-shadow: 0 1px 4px rgba(0,0,0,.2);
+  }
+  
+  /* Keyboard focus ring */
+  .semi-gauge:focus-within .gauge-arc {
+    outline: none;
+    box-shadow: 0 0 0 6px var(--ring), inset 0 1px 4px rgba(0,0,0,.18);
+  }
+  
+  /* === CSS-only state control via :checked === */
+  #mode-auto:checked ~ .gauge-dial .gauge-needle {
+    transform: rotate(var(--angle-left));
+    background: var(--clr-auto);
+  }
+  #mode-indv:checked ~ .gauge-dial .gauge-needle {
+    transform: rotate(var(--angle-right));
+    background: var(--clr-indv);
+  }
+  
+  /* Responsive tweak */
+  @media (max-width: 480px) {
+    .semi-gauge {
+      --gauge-w: 180px;
+      --gauge-h: 100px;
+      --needle-l: 64px;
+      --cap: 30px;
+    }
+  }
+
+  /* Let the gauge grow to consume remaining width so there is no trailing empty space */
+.gauge-inline {
+  flex: 1 1 auto;           /* grow to fill the rest */
+  display: flex;
+  justify-content: flex-center; /* keep gauge visually right-aligned */
+  min-width: 300px;          /* don’t shrink too small (adjust if needed) */
+}
+
+/* Make the gauge itself larger (but still compact looking) */
+.semi-gauge {
+  --gauge-w: 320px;          /* wider to occupy space */
+  --gauge-h: 130px;          /* slightly taller for readability */
+  --needle-l: 95px;          /* proportionally longer needle */
+  --needle-w: 8px;
+  --cap: 36px;
+}
+
+/* Reduce internal label gap inside the gauge (keeps labels close to arc ends) */
+.semi-gauge .gauge-labels {
+  gap: 6px;
+  margin-bottom: 0;          /* tighten vertical space */
+}
+
+/* Slightly larger gauge labels for factory readability without adding outside gap */
+.semi-gauge .gauge-label {
+  font-size: 1.25rem;        /* readable but compact */
+}

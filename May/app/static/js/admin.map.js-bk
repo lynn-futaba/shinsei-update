@@ -1,0 +1,385 @@
+/**
+ * RMS Map Monitoring Frontend (admin.map.js)
+ * Author: Lynn
+ */
+
+const SIZE = {
+  amrRadius: 15,
+  amrStroke: 4,
+  amrHeadRadius: 4,
+  amrShadowOffset: 3,
+  amrLabelFont: 6,
+
+  cellFont: 8,
+
+  // Capital I Kotatsu tuning
+  kotatsuStemRatio: 0.45,
+  kotatsuBarRatio: 0.55,
+  kotatsuThickness: 0.22,
+};
+
+const GRID_GAP_X = 10;
+const GRID_GAP_Y = 10;
+
+const BASE_CELL_GAP = 12;
+
+/* ================= Inline CSS ================= */
+$("<style>", { type: "text/css" })
+  .html(`
+    .amr-clickable { cursor: pointer; }
+    .shelf-clickable { cursor: pointer; }
+    .cell-clickable { cursor: crosshair; }
+  `)
+  .appendTo("head");
+
+$(document).ready(function () {
+
+  /* ================= PAN / ZOOM STATE ================= */
+  let scale = 1;
+  let pointX = 0;
+  let pointY = 0;
+  let isDragging = false;
+  let start = { x: 0, y: 0 };
+
+  const $map = $("#map");
+  const $container = $("#map-container");
+
+  function setTransform() {
+    $map.css({
+      transform: `translate(${pointX}px, ${pointY}px) scale(${scale})`,
+      "transform-origin": "0 0"
+    });
+  }
+
+  function fitMapToContainer(svgWidth, svgHeight) {
+    const containerWidth = $container.width();
+    const containerHeight = $container.height();
+  
+    if (!containerWidth || !containerHeight) return;
+  
+    // ✅ calculate scale to fit
+    const scaleX = containerWidth / svgWidth;
+    const scaleY = containerHeight / svgHeight;
+  
+    // use smaller to fit inside
+    scale = Math.min(scaleX, scaleY) * 0.95; // slight margin
+  
+    // ✅ center the map
+    pointX = (containerWidth - svgWidth * scale) / 2;
+    pointY = (containerHeight - svgHeight * scale) / 2;
+  
+    setTransform();
+  }
+
+  /* ================= PAN ================= */
+  $container.on("mousedown", function (e) {
+    if ($(e.target).is("button")) return;
+    start.x = e.clientX - pointX;
+    start.y = e.clientY - pointY;
+    isDragging = true;
+  });
+
+  $(window)
+    .on("mousemove", function (e) {
+      if (!isDragging) return;
+      pointX = e.clientX - start.x;
+      pointY = e.clientY - start.y;
+      setTransform();
+    })
+    .on("mouseup", function () {
+      isDragging = false;
+    });
+
+  /* ================= WHEEL ZOOM ================= */
+  $container.on("wheel", function (e) {
+    e.preventDefault();
+    const factor = e.originalEvent.deltaY > 0 ? 0.9 : 1.1;
+    scale = Math.min(Math.max(scale * factor, 0.05), 15);
+    setTransform();
+  });
+
+  /* ================= ZOOM BUTTONS ================= */
+  $("#zoom-in").on("click", function () {
+    scale = Math.min(scale * 1.2, 15);
+    setTransform();
+  });
+
+  $("#zoom-out").on("click", function () {
+    scale = Math.max(scale / 1.2, 0.05);
+    setTransform();
+  });
+
+  $("#zoom-reset").on("click", function () {
+    scale = 1;
+    pointX = 0;
+    pointY = 0;
+    setTransform();
+  });
+
+  function getCellGap(c) {
+    return Math.min(BASE_CELL_GAP, Math.min(c.width, c.height) * 0.35);
+  }
+
+  /* ================= MAIN MAP RENDER ================= */
+  function mapMonito() {
+    $.get("/manage/api/v1/rms_map_monitor", function (res) {
+      if (!res || !res.data) return;
+
+      const cells = res.data.cells || [];
+      const kotatsus = res.data.kotatsus || [];
+      const amrs = res.data.amrs || [];
+      const size = res.data.size || [1000, 1000];
+
+      const width = size[0];
+      const height = size[1];
+      const svgNS = "http://www.w3.org/2000/svg";
+
+      const svg = document.createElementNS(svgNS, "svg");
+      svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+      svg.setAttribute("width", width);
+      svg.setAttribute("height", height);
+
+      const mapRoot = document.createElementNS(svgNS, "g");
+      mapRoot.setAttribute("transform", `translate(0, ${height}) scale(1,-1)`);
+      svg.appendChild(mapRoot);
+
+      // ✅ Build spacing index (no logic change)
+const rows = [...new Set(cells.map(c => c.location_y))].sort((a, b) => a - b);
+const cols = [...new Set(cells.map(c => c.location_x))].sort((a, b) => a - b);
+
+const rowIndex = y => rows.indexOf(y);
+const colIndex = x => cols.indexOf(x);
+
+// ✅ Apply spacing WITHOUT breaking existing logic
+const cellCache = cells.map(c => {
+  const r = rowIndex(c.location_y);
+  const col = colIndex(c.location_x);
+
+  const offsetX = col * GRID_GAP_X;
+  const offsetY = r * GRID_GAP_Y;
+
+  const spacedX = c.location_x + offsetX;
+  const spacedY = c.location_y + offsetY;
+
+  return {
+    ...c,
+    spacedX,
+    spacedY,
+    cx: spacedX + c.width / 2,
+    cy: spacedY + c.height / 2
+  };
+});
+
+      function findCell(x, y) {
+        const matches = cellCache.filter(c =>
+x >= c.spacedX &&
+x <= c.spacedX + c.width &&
+y >= c.spacedY &&
+y <= c.spacedY + c.height
+
+        );
+        if (matches.length === 0) return null;
+        matches.sort((a, b) =>
+          (b.location_y - a.location_y) || (b.location_x - a.location_x)
+        );
+        return matches[0];
+      }
+
+      /* ================= CELLS ================= */
+      cellCache.forEach(cell => {
+        const g = document.createElementNS(svgNS, "g");
+        g.classList.add("cell-clickable");
+
+        const gap = getCellGap(cell);
+        const rect = document.createElementNS(svgNS, "rect");
+        rect.setAttribute("x", cell.spacedX);
+        rect.setAttribute("y", cell.spacedY);
+        rect.setAttribute("width", cell.width);
+        rect.setAttribute("height", cell.height);
+        rect.setAttribute("fill", "#e0f7fa");
+        rect.setAttribute("stroke", "#4fc3f7");
+        g.appendChild(rect);
+
+        const txt = document.createElementNS(svgNS, "text");
+        txt.setAttribute("x", cell.cx);
+        txt.setAttribute("y", cell.cy);
+        txt.setAttribute("font-size", SIZE.cellFont);
+        txt.setAttribute("fill", "#006064");
+        txt.setAttribute("text-anchor", "middle");
+        txt.setAttribute("pointer-events", "none");
+        txt.setAttribute(
+          "transform",
+          `scale(1,-1) translate(0, ${-2 * cell.cy})`
+        );
+        txt.textContent = cell.cellCode;
+        g.appendChild(txt);
+
+        g.onclick = function (e) {
+          e.stopPropagation();
+          $(document).trigger("map:select", { type: "cell", id: cell.cellCode });
+        };
+
+        mapRoot.appendChild(g);
+      });
+
+      /* ================= KOTATSU ================= */
+      kotatsus.forEach(k => {
+        const cell = findCell(k.location_x, k.location_y);
+        if (!cell) return;
+
+        const g = document.createElementNS(svgNS, "g");
+        g.classList.add("shelf-clickable");
+
+        const cx = cell.cx;
+        const cy = cell.cy;
+
+        const thick = Math.max(8, cell.height * SIZE.kotatsuThickness);
+        const stem = Math.max(14, cell.height * SIZE.kotatsuStemRatio);
+        const bar = Math.max(14, cell.width * SIZE.kotatsuBarRatio);
+        const horizontal = k.angle === 90 || k.angle === -90;
+
+        function rect(x, y, w, h) {
+          const r = document.createElementNS(svgNS, "rect");
+          r.setAttribute("x", x);
+          r.setAttribute("y", y);
+          r.setAttribute("width", w);
+          r.setAttribute("height", h);
+          r.setAttribute("fill", "#3f51b5");
+          return r;
+        }
+
+        if (!horizontal) {
+          g.append(rect(cx - thick / 2, cy - stem / 2, thick, stem));
+          g.append(rect(cx - bar / 2, cy + stem / 2 - thick, bar, thick));
+          g.append(rect(cx - bar / 2, cy - stem / 2, bar, thick));
+        } else {
+          g.append(rect(cx - stem / 2, cy - thick / 2, stem, thick));
+          g.append(rect(cx - stem / 2, cy - bar / 2, thick, bar));
+          g.append(rect(cx + stem / 2 - thick, cy - bar / 2, thick, bar));
+        }
+
+        /* ✅ Kotatsu hover label (restored) */
+        const labelY = cy - bar / 2 - thick - 6;
+        const label = document.createElementNS(svgNS, "text");
+        label.setAttribute("x", cx);
+        label.setAttribute("y", labelY);
+        label.setAttribute("font-size", "7");
+        label.setAttribute("fill", "#ffffff");
+        label.setAttribute("font-weight", "600");
+        label.setAttribute("text-anchor", "middle");
+        label.setAttribute("pointer-events", "none");
+        label.setAttribute(
+          "transform",
+          `scale(1,-1) translate(0, ${-2 * labelY})`
+        );
+        label.textContent = k.shelfCode;
+        label.style.display = "none";
+
+        g.appendChild(label);
+        g.addEventListener("mouseenter", () => label.style.display = "block");
+        g.addEventListener("mouseleave", () => label.style.display = "none");
+
+        g.onclick = function (e) {
+          e.stopPropagation();
+          $(document).trigger("map:select", { type: "shelf", id: k.shelfCode });
+        };
+
+        mapRoot.appendChild(g);
+      });
+
+      /* ================= AMR ================= */
+      amrs.forEach(robot => {
+        // --- AMR-only corrected cell selection ---
+let amrCell = null;
+
+// candidate cells that align in X
+const candidates = cellCache.filter(c =>
+  robot.location_x >= c.spacedX &&
+  robot.location_x <= c.spacedX + c.width
+);
+
+// prefer the first cell BELOW the robot (lower row)
+const below = candidates
+  .filter(c => c.cy >= robot.location_y)
+  .sort((a, b) => a.cy - b.cy);
+
+if (below.length > 0) {
+  amrCell = below[0];
+} else {
+  // fallback to original logic
+  amrCell = findCell(robot.location_x, robot.location_y);
+}
+
+const cx = amrCell ? amrCell.cx : robot.location_x;
+const cy = amrCell ? amrCell.cy : robot.location_y;
+
+        const g = document.createElementNS(svgNS, "g");
+        g.classList.add("amr-clickable");
+
+        const moving = Array.isArray(robot.path) && robot.path.length > 1;
+        const color = moving ? "#2196f3" : (robot.color || "green");
+
+        const shadow = document.createElementNS(svgNS, "circle");
+        shadow.setAttribute("cx", cx + SIZE.amrShadowOffset);
+        shadow.setAttribute("cy", cy - SIZE.amrShadowOffset);
+        shadow.setAttribute("r", SIZE.amrRadius);
+        shadow.setAttribute("fill", "rgba(0,0,0,0.25)");
+
+        const body = document.createElementNS(svgNS, "circle");
+        body.setAttribute("cx", cx);
+        body.setAttribute("cy", cy);
+        body.setAttribute("r", SIZE.amrRadius);
+        body.setAttribute("fill", color);
+        body.setAttribute("stroke", "#fff");
+        body.setAttribute("stroke-width", SIZE.amrStroke);
+
+        g.append(shadow, body);
+
+        /* ✅ AMR head ONLY when moving, correct direction */
+        if (moving) {
+          const angleRad = robot.angle * Math.PI / 180;
+          const dx = Math.cos(angleRad) * (SIZE.amrRadius - 4);
+          const dy = -Math.sin(angleRad) * (SIZE.amrRadius - 4);
+
+          const head = document.createElementNS(svgNS, "circle");
+          head.setAttribute("cx", cx + dx);
+          head.setAttribute("cy", cy + dy);
+          head.setAttribute("r", SIZE.amrHeadRadius);
+          head.setAttribute("fill", "#ffffff");
+
+          g.appendChild(head);
+        }
+
+        const label = document.createElementNS(svgNS, "text");
+        label.setAttribute("x", cx);
+        label.setAttribute("y", cy - SIZE.amrRadius - 6);
+        label.setAttribute("font-size", SIZE.amrLabelFont);
+        label.setAttribute("fill", "#ffffff");
+        label.setAttribute("text-anchor", "middle");
+        label.setAttribute("pointer-events", "none");
+        label.setAttribute(
+          "transform",
+          `scale(1,-1) translate(0, ${-2 * (cy - SIZE.amrRadius - 6)})`
+        );
+        label.textContent = robot.robotId;
+        g.appendChild(label);
+
+        g.onclick = function (e) {
+          e.stopPropagation();
+          $(document).trigger("map:select", { type: "amr", id: robot.robotId });
+        };
+
+        mapRoot.appendChild(g);
+      });
+
+      $("#map").empty().append(svg);
+      
+      // ✅ auto-fit + center
+      const maxX = Math.max(...cellCache.map(c => c.spacedX + c.width));
+      const maxY = Math.max(...cellCache.map(c => c.spacedY + c.height));
+      fitMapToContainer(maxX, maxY);
+    });
+  }
+
+  setInterval(mapMonito, 400);
+});

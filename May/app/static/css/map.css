@@ -1,0 +1,131 @@
+.map-viewport {
+  position: relative;
+  overflow: hidden;
+  background: #f7f9fb;
+  height: 75vh;
+}
+
+#map-container {
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: none; /* ✅ REQUIRED for wheel + trackpad */
+
+}
+
+#map,
+.map-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+#map svg {
+  display: block;
+  background: #ffffff;
+  box-shadow: 0 0 12px rgba(0,0,0,.08);
+}
+
+.map-zoom-controls {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 1000;
+}
+
+  
+  /* ============================================================
+     INTERACTION CURSORS
+     ============================================================ */
+  
+  .amr-clickable   { cursor: pointer; }
+  .shelf-clickable { cursor: pointer; }
+  .cell-clickable  { cursor: crosshair; }
+  
+  /* ============================================================
+     CELLS — INDUSTRIAL EPOXY FLOOR
+     ============================================================ */
+  
+     .cell-clickable rect {
+      fill: #e0f7fa;
+      stroke: #4fc3f7;
+      stroke-width: 0.6;
+    }
+    
+    .cell-clickable:nth-child(odd) rect {
+      fill: #edf5f7;
+    }
+    
+    .cell-clickable:hover rect {
+      fill: #d9eef3;
+    }
+    
+    .cell-clickable.active rect {
+      fill: #cfeaf2;
+      stroke: #7bbfd4;
+    }
+  
+  /* ============================================================
+     TEXT
+     ============================================================ */
+  
+  #map text {
+    fill: #546e7a;
+    text-rendering: geometricPrecision;
+    -webkit-font-smoothing: antialiased;
+    user-select: none;
+    pointer-events: none;
+  }
+  
+  /* ============================================================
+     SHELVES (KOTATSU)
+     ============================================================ */
+  
+  .shelf-clickable rect {
+    fill: #3f51b5;
+    stroke: #1a237e;
+    stroke-width: 0.8;
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.22));
+  }
+  
+  .shelf-clickable text {
+    fill: #ffffff;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+  }
+  
+  @keyframes shelfBreath {
+    0%   { opacity: 0.94; }
+    50%  { opacity: 1; }
+    100% { opacity: 0.94; }
+  }
+  
+  .shelf-clickable {
+    animation: shelfBreath 2.8s ease-in-out infinite;
+  }
+  
+  /* ============================================================
+     AMR
+     ============================================================ */
+  
+  .amr-clickable circle {
+    filter: drop-shadow(0 3px 6px rgba(0,0,0,0.35));
+  }
+  
+  .amr-clickable text {
+    fill: #ffffff;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-anchor: middle;
+  }
+  
+  .amr-clickable {
+    transition: transform 0.35s linear;
+  }
+  
+  /* ============================================================
+     PATH
+     ============================================================ */
+  
+  .robot-path-line {
+    opacity: 0.7;
+  }
