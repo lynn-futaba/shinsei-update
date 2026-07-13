@@ -1,0 +1,116 @@
+% Category 1: Personal Identification Documents 身分証明書
+==============================
+- Application Form for Permanent Residence	永住許可申請書
+- Copy of Residence Card (front and back)	在留カードのコピー
+- Copy of Passport (all pages with stamps)	パスポートのコピー
+- Passport-size photo (4cm x 3cm)	証明写真	Photo booth or studio
+- Certificate of Residence (Juminhyo)	住民票	                       City/Ward Office
+The Certificate of Residence (住民票) must include all household members, their relationship to you, and your full registered address. It must be issued within 3 months of submission.
+
+% Category 2: Tax and Financial Documents
+==============================
+National Tax Payment Certificate (Form 3)	納税証明書その３	Tax Office (税務署)
+Income & Local Tax Certificate	                住民税の課税証明書	City/Ward Office
+Local Tax Payment Certificate	                住民税の納税証明書	City/Ward Office
+Annual Income Statement	                        収入証明書	        Employer or Tax Office
+
+
+% Category 3: Pension and Health Insurance Documents
+==============================
+Pension Payment Record	        年金記録 (ねんきん定期便 or 年金手帳)	   Japan Pension Service (ねんきんネット)
+Opitional ⇒　Health Insurance Card (copy)	健康保険証のコピー	   Employer or City Office 
+Only person paid by themselves  ⇒　Health Insurance Premium Payment Certificate　健康保険料の納付証明書  City Office or Health Insurance Union
+
+
+% Category 4: Employment and Income Verification
+==============================
+Certificate of Employment	        在職証明書	Your employer's HR department
+Recent Salary Statements (3–6 months)	給与明細	Your employer
+Employment Contract	                雇用契約書	Your employer
+✅ 給与明細 (salary slips showing deductions 健康保険, 厚生年金, 雇用保険)
+✅ 源泉徴収票
+
+％ Category 5: Documents for Highly Skilled Professional (HSP) Visa Holders
+==============================
+HSP Points Calculation Sheet	高度人材ポイント計算表	        Download from IMMI website
+University Degree Certificate	学位証明書	                Translated to Japanese if needed
+Professional Certifications	資格証明書	                All certifications claimed for points
+Research Publications (if applicable)	論文・著作リスト	For research category HSP applicants
+Patent Records (if applicable)	特許証明書	For technology innovators
+
+Category 6: The Reason Letter (理由書)
+==============================
+This is one of the most overlooked yet most important documents in the PR application. The reason letter (理由書, riyusho) is a personal statement explaining:
+
+Why you want permanent residency in Japan
+Your future plans in Japan
+Your ties to Japan (family, career, community)
+Requirements:
+
+Must be written in Japanese
+Free-format, but typically 1–2 pages
+Should demonstrate genuine commitment to Japan as your long-term home
+
+Category 7: Letter of Understanding (了解書)
+
+
+=======================================================================================
+
+Summary: Master Document Checklist
+Here's a condensed checklist to take to your city office and immigration bureau:
+
+Always Required:
+
+[✔] 永住許可申請書     Application form (Permanent Resident Status) 
+[✔] 証明写真           Passport-size photo (4cm x 3cm) 
+[✔] 在留カードのコピー Residence card copy (front and back) 
+[✔] パスポートのコピー Passport copy (all relevant pages, old passport, new passport) 
+
+[✔] 住民票     Certificate of Residence (within 3 months)
+[✔] 住民税の課税証明書、Local tax certificate and payment certificate
+     住民税の納税証明書  (岡崎の市役所は住民税は0円と言われました)　
+[✔] 納税証明書その３   National tax payment certificate (Form 3) 
+[✔] 年金記録 Pension payment records 
+[✔] 健康保険証のコピー Health insurance card copy
+
+[✔] 在職証明書 Certificate of employment
+[✔] 給与明細 Salary statements (3–6 months)
+[✔] 源泉徴収票　Annual income certificates for the past 3–5 years 
+[✔] 理由書 Reason letter in Japanese
+[✔] HSP 80+ points sheet evidence
+[✔] HSP points sheet and supporting documents 高度人材ポイント計算表
+
+[✔] 了解書 Letter of Understanding in Japanese
+
+
+==================================================
+
+Common Mistakes That Lead to Rejection
+Missing or outdated documents — Most certificates must be issued within 3 months of submission. Don't gather documents months in advance.
+Inconsistent name spelling — If your name is romanized differently on different documents (e.g., "Müller" vs "Muller"), this can raise flags.
+Address discrepancies — Ensure all documents use your current registered address.
+Late tax or pension payments — Even one late payment can trigger scrutiny. Check your records before applying.
+Incomplete pension history — If you were enrolled in National Pension (国民年金) at any point, ensure all months are accounted for.
+Not updating your reason letter — A generic reason letter that doesn't reflect your actual life in Japan is easy to spot.
+
+
+(3) Tax compliance
+Municipal tax payment certificate (納税証明書), national tax payment certificate
+
+(4) Income proof 
+Employment certificate, recent pay stubs, bank account statements
+
+(5) Insurnace
+National pension payment record (ねんきん定期便 or online printout), health insurance card
+
+(6) Guarantor
+Letter of guarantee from a Japanese national or permanent resident willing to vouch for you
+
+
+Work Visa Holders:
+
+Certificate of Employment (在職証明書)
+Annual income certificates for the past 3–5 years (源泉徴収票)
+Company registration documents (if self-employed or business owner)
+
+https://japanlivinglife.com/articles/documents-required-japan-pr-application
