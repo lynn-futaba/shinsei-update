@@ -1,0 +1,290 @@
+🚀 Roadmap: From Beginner to Full-Stack Developer
+
+Step 0: Understand the goal
+
+A Full-Stack Developer can build:
+
+User Interface
+      ↓
+Frontend
+      ↓
+Backend API
+      ↓
+Database
+      ↓
+Server / Cloud
+
+You do not need to learn everything at once.
+
+Phase 1: Web Foundation (1–3 months)
+
+Learn: HTML
+Purpose: Structure of a webpage
+
+Example:
+
+title
+button
+form
+table
+CSS
+
+Purpose: Design and layout
+
+Learn:
+
+Flexbox
+Grid
+Responsive design
+JavaScript
+
+Purpose: Make website interactive
+
+Learn:
+
+Variables
+Function
+Array/Object
+DOM
+API communication
+Practice project:
+
+Create:
+
+✅ Personal portfolio website
+✅ Simple calculator
+✅ Todo list
+
+Goal:
+
+“I can create a website by myself.”
+
+Phase 2: Frontend Development (2–4 months)
+
+Choose one framework:
+
+Recommended: React
+
+Learn:
+
+Component
+State
+Props
+Routing
+API connection
+
+Create projects:
+
+Example: Blog system
+
+Features:
+
+Login page
+Article list
+Create/edit/delete article
+
+Phase 3: Backend Development (3–6 months)
+
+Choose one language.
+
+For Japan IT market:
+
+Option 1: Java ⭐
+
+Very common in Japanese companies.
+
+Learn:
+Java basics
+Spring Boot
+REST API
+
+Option 2: Python
+
+Good for:
+AI
+automation
+data
+
+Learn:
+API
+Authentication
+Business logic
+
+Phase 4: Database
+
+Learn: SQL
+
+Example:
+Database: User Table
+
+id
+name
+email
+password
+
+Learn:
+
+SELECT
+INSERT
+UPDATE
+DELETE
+Table relationship
+
+Tools:
+
+MySQL
+PostgreSQL
+
+Phase 5: Development Tools
+
+Every engineer needs: Git / GitHub
+
+Learn:
+
+commit
+branch
+pull request
+Linux basics
+
+Learn:
+command line
+file management
+Docker basics
+
+Learn:
+container
+environment setup
+
+Phase 6: Build Portfolio (Very important)
+
+Companies do not only ask:
+
+“What did you study?”
+
+They ask:
+
+“What did you build?”
+
+Create 2–3 projects.
+
+Examples:
+
+Project 1: Online shopping system
+
+Frontend: React
+
+Backend: Spring Boot
+
+Database: PostgreSQL
+
+Project 2:
+
+Task management system
+
+Features:
+login
+user management
+CRUD operation
+
+Phase 7: Prepare for IT job in Japan
+
+Technical skill is important.
+
+But Japan also needs:
+
+Japanese ability
+
+Improve:
+
+workplace conversation
+technical vocabulary
+interview communication
+
+Learn phrases:
+
+「仕様を確認します」
+(I will confirm the specification.)
+
+「原因を調査します」
+(I will investigate the cause.)
+
+「認識を合わせたいです」
+(I want to align our understanding.)
+
+IT College vs Self-study
+
+Both are possible.
+
+IT College (専門学校)
+
+Advantages:
+
+structured learning
+teachers
+classmates
+job support
+Self-study
+
+Advantages:
+
+cheaper
+flexible
+possible while working
+
+But requires:
+
+discipline
+project building
+continuous learning
+
+If she is working now, recommended schedule
+Weekdays
+
+30–60 minutes:
+
+Example:
+
+Monday:
+HTML/CSS
+
+Tuesday:
+JavaScript
+
+Wednesday:
+Reading IT articles
+
+Thursday:
+Coding practice
+
+Friday:
+Review
+
+Weekend
+
+2–4 hours:
+
+Build projects.
+
+Important advice from an engineer
+
+Do not only watch tutorials.
+
+Bad:
+
+100 hours watching videos
+0 projects
+
+Better:
+
+30 hours learning
++
+70 hours building
+Final message for her
+
+You can tell her:
+
+“You do not need an IT background to become an engineer. 
+ Many engineers change careers. The important things are continuous learning, building projects, communication skills, and patience.”
+
+And from your own experience, you can add:
+“In Japan, programming skill is important, but communication and Japanese ability also become your engineering skills.”
