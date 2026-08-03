@@ -1,4 +1,5 @@
 🟢 Aug1: Create the skeleton
+-----------------------------
 Do NOT design.
 Prepare: University seminar outline, Company seminar outline
 Use Google Slides or Canva.
@@ -7,6 +8,7 @@ Target:
 title, slide titles, bullet points only
 
 🟢 Aug 2: Finish University Presentation
+----------------------------------------
 University Seminar
 Title: "From PhD to Software Engineer in Japan"
 Target: Students + professors
@@ -101,6 +103,7 @@ Your strongest message is:
 "I was also a student. I faced challenges. I learned step by step. Here is what I discovered."
 
 That is why students will listen to you.
+
 ---------
 Timedoor
 ---------
@@ -237,7 +240,7 @@ From PhD to Software Engineer in Japan
 
 Target: Students + professors
 
-Slides: 15–18 slides
+Slides: 15 slides
 
 Slide structure:
 
@@ -330,9 +333,12 @@ Company people want: "How do engineers work in Japan?"
 
 Lunch: Great opportunity.
 
-Ask: How many engineers? What technologies? What products? What challenges?
+Ask: How many engineers? 
+What technologies? 
+What products? 
+What challenges?
 
-Observe: company culture, communication style, working environment
+Observe: Company culture, Communication style, Working environment
 
 This helps your future business thinking.
 
@@ -344,13 +350,14 @@ Title: Software Engineering in Japan: My Experience
 Slides: 12–15 slides
 
 Focus:
-engineering culture
-system development
-teamwork
+Engineering culture
+System development
+Teamwork
 Japanese company experience
 
 Structure:
-Introduction, My background, Working in Japan, Software development process, Requirement understanding, Design thinking, System engineering, Communication
+Introduction, My background, Working in Japan, Software development process, 
+Requirement understanding, Design thinking, System engineering, Communication
 Smart factory overview (general only), Challenges for foreign engineers, Lessons learned, Future collaboration
 
 ---------------------------------------
@@ -418,7 +425,7 @@ My recommendation for your personal growth
 During Bali, take one notebook.
 Title: "Future Business Ideas from Bali"
 
-Write: student problems, company needs, education ideas, international connections
+Write: Student problems, Company needs, Education ideas, International connections
 
 Because this trip may become the first research for your future:
 
@@ -449,7 +456,6 @@ Slide 1 - Title
 Slide 2 - About Me
 
 Simple timeline:
-
 Myanmar
 ↓
 PhD in Japan
@@ -457,11 +463,9 @@ PhD in Japan
 Software Engineer in Japan
 
 Slide 3
-
 What is Software Engineering?
 
 Explain:
-
 Programming ≠ Software Engineering
 
 Programming:
@@ -497,7 +501,6 @@ Problem:
 Move materials efficiently
 
 Software solution:
-
 Control tasks
 Manage equipment
 Monitor status
@@ -548,7 +551,6 @@ Domain Modeling Example
 Simple example:
 
 Factory:
-
 Order
   |
   |
@@ -558,7 +560,6 @@ Robot
 Location
 
 Explain:
-
 "Software models real-world business objects."
 
 Part 3: Advanced Level
@@ -568,21 +569,17 @@ Part 3: Advanced Level
 For experienced engineers.
 
 Slide 10
-
 Domain-Driven Thinking
 
 Explain:
 
 Not only:
-
 "How to write code?"
 
 But:
-
 "What should the system represent?"
 
 Slide 11
-
 Smart Factory Example
 
 Simple architecture:
@@ -639,9 +636,10 @@ Keep learning
 Understand problems
 Communicate
 Build with others
-Slide 15
 
+Slide 15
 Q&A
+
 Why this structure works
 
 For students:
@@ -657,7 +655,7 @@ They learn:
 For senior engineers:
 They can discuss:
 
-"System design, domain modeling, smart factory."
+"System design, Domain modeling, Smart factory."
 
 "A software engineer is not only someone who writes code. 
 A software engineer understands problems, designs systems, and creates value."
