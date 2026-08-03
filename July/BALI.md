@@ -1,4 +1,4 @@
-🟢 Aug1: create the skeleton
+🟢 Aug1: Create the skeleton
 Do NOT design.
 Prepare: University seminar outline, Company seminar outline
 Use Google Slides or Canva.
