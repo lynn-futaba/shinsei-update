@@ -15,7 +15,7 @@ Slides:
 15 slides maximum
 
 ➡Slide 1
-Title: Your name
+Title: Lynn Htet Aung
 "Software Engineer in Japan" 
 
 ➡Slide 2
@@ -225,8 +225,11 @@ Q&A / discussion
 55–60 min
 
 Closing
+
 -------------------------------------------
+
 Presentation 1: University
+
 Title:
 From PhD to Software Engineer in Japan
 
@@ -430,3 +433,231 @@ That message matches your long-term vision very well.
 
 Food:
 Beef Rendang Recipe
+
+--------------------
+Slide Structure Recommendation (30 min)
+
+Part 1: Basic Level (Everyone can understand)
+
+0–10 minutes
+
+Goal:
+Students and non-experts understand the foundation.
+
+Slide 1 - Title
+
+Slide 2 - About Me
+
+Simple timeline:
+
+Myanmar
+↓
+PhD in Japan
+↓
+Software Engineer in Japan
+
+Slide 3
+
+What is Software Engineering?
+
+Explain:
+
+Programming ≠ Software Engineering
+
+Programming:
+Writing code
+
+Software Engineering:
+Building reliable systems to solve problems
+
+Slide 4
+How Software is Built
+
+Simple flow:
+
+Problem
+ ↓
+Requirement
+ ↓
+Design
+ ↓
+Development
+ ↓
+Testing
+ ↓
+Operation
+
+Slide 5
+Example of Real Software Problem
+
+Example:
+"Factory needs automatic transportation."
+
+Problem:
+Move materials efficiently
+
+Software solution:
+
+Control tasks
+Manage equipment
+Monitor status
+
+Part 2: Engineering Level
+10–20 minutes
+
+For developers/engineers.
+
+Slide 6
+Software Development in Japan
+
+Explain:
+Requirement understanding
+Documentation
+Team communication
+Quality mindset
+
+Slide 7
+From Coding to System Thinking
+
+Show:
+
+Beginner:
+Task → Code
+
+Engineer:
+Problem
+ ↓
+Business Understanding
+ ↓
+System Design
+ ↓
+Implementation
+
+Slide 8
+What is System Design?
+
+Explain:
+Components
+Responsibilities
+Data flow
+Communication between systems
+
+Slide 9
+Domain Modeling Example
+
+Simple example:
+
+Factory:
+
+Order
+  |
+  |
+Robot
+  |
+  |
+Location
+
+Explain:
+
+"Software models real-world business objects."
+
+Part 3: Advanced Level
+
+20–30 minutes
+
+For experienced engineers.
+
+Slide 10
+
+Domain-Driven Thinking
+
+Explain:
+
+Not only:
+
+"How to write code?"
+
+But:
+
+"What should the system represent?"
+
+Slide 11
+
+Smart Factory Example
+
+Simple architecture:
+
+Factory Equipment
+        |
+        ↓
+Control System
+        |
+        ↓
+Software Application
+        |
+        ↓
+Data / Decision
+
+Slide 12
+Future Engineering Skills
+
+Engineers need:
+
+Technical:
+
+Programming
+Architecture
+AI tools
+
+Human:
+Communication
+Problem solving
+Collaboration
+
+Slide 13
+AI and Software Engineering
+
+Simple message:
+
+AI will help engineers:
+
+analyze documents
+automate tasks
+support development
+
+But engineers still need:
+
+domain knowledge
+system thinking
+
+Slide 14
+My Lessons Learned
+
+Your personal message:
+
+Keep learning
+Understand problems
+Communicate
+Build with others
+Slide 15
+
+Q&A
+Why this structure works
+
+For students:
+They understand:
+
+"What is software engineering?"
+
+For junior engineers:
+They learn:
+
+"How do I grow from coding to engineering?"
+
+For senior engineers:
+They can discuss:
+
+"System design, domain modeling, smart factory."
+
+"A software engineer is not only someone who writes code. 
+A software engineer understands problems, designs systems, and creates value."
